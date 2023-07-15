@@ -8,6 +8,7 @@ from nltk.corpus import wordnet as wn
 import numpy as np
 import pandas as pd
 from sklearn.metrics import accuracy_score
+from pathlib import Path
 
 
 class Preprocessing:
@@ -44,7 +45,7 @@ class Preprocessing:
     def pipeline(self, sentence):
         token = self.tokenize(sentence)
         token = self.stopword_removal(token)
-        token = self.stem(token)
+        # token = self.stem(token)
 
         return token
 
@@ -53,7 +54,7 @@ class SimplifiedLesk:
 
     def __init__(self, sentence, word):
         self.sentence = sentence
-        self.word = word.lower().join((w for w in self.word if not w.isdigit()))
+        self.word = word.lower()
         self.preprocess = Preprocessing()
 
     def _set_dictionary(self, word):
@@ -156,10 +157,10 @@ class SimplifiedLesk:
 
 if __name__ == '__main__':
     # read in the data from the Excel file
-    path = 'D:/NurulAkhni/NurulAkhni/SKRIPSI/skripsi-editable/program/wsd-app/asset/data/origin_dataset_stemming_stopword.xlsx'
+    # path = 'D:/NurulAkhni/NurulAkhni/SKRIPSI/skripsi-editable/program/wsd-app/asset/data/origin_dataset_stemming_stopword.xlsx'
     # path = 'D:/NurulAkhni/NurulAkhni/SKRIPSI/skripsi-editable/program/wsd-app/asset/data/origin_dataset_tanpa_stemming_stopword.xlsx'
-    # path = 'D:/NurulAkhni/NurulAkhni/SKRIPSI/skripsi-editable/program/wsd-app/asset/data/origin_dataset_stemming.xlsx'
-    # path = 'D:/NurulAkhni/NurulAkhni/SKRIPSI/skripsi-editable/program/wsd-app/asset/data/origin_dataset_stopword.xlsx'
+    # path = Path('asset/data/origin_dataset_stemming.xlsx')
+    path = Path('asset/data/origin_dataset_stopword.xlsx')
     df = pd.read_excel(path)
 
     # loop through the pairs of values in columns A and B

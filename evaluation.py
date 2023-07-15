@@ -1,6 +1,7 @@
 import pandas as pd
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 import json
+from pathlib import Path
 
 
 class Evaluation:
@@ -35,7 +36,9 @@ class Evaluation:
 
 if __name__ == '__main__':
     # read in the data from the Excel file
-    path = 'D:/NurulAkhni/NurulAkhni/SKRIPSI/skripsi-editable/program/wsd-app/asset/data/origin_dataset_v4.xlsx'
+    # path = Path('asset/data/origin_dataset_stemming.xlsx')
+    path = Path('asset/data/origin_dataset_stopword.xlsx')
+    df = pd.read_excel(path)
     df = pd.read_excel(path)
 
     actual_senses = df['Actual Sense'].tolist()
