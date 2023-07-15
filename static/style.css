@@ -1,0 +1,373 @@
+body {
+    background: #fff;
+    font-family: "Libre Baskerville", serif;
+    line-height: 1.5;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+input,
+textarea,
+select {
+    font: 13px "Libre Baskerville";
+}
+
+input[type=button] {
+    margin: 30px 0 0;
+    padding: 5px;
+    font-size: 11px;
+    min-width: 200px;
+    cursor: pointer;
+    outline: none;
+}
+
+strong {
+    font-weight: 700;
+}
+
+em {
+    font-style: italic;
+}
+
+aside.context {
+    text-align: center;
+    color: #333;
+    line-height: 1.7;
+}
+
+aside.context a {
+    text-decoration: none;
+    color: #333;
+    padding: 3px 0;
+    border-bottom: 1px dashed;
+}
+
+aside.context a:hover {
+    border-bottom: 1px solid;
+}
+
+aside.context .explanation {
+    max-width: 700px;
+    margin: 7em auto 0;
+}
+
+footer {
+    text-align: center;
+    margin: 2em auto;
+    width: 100%;
+}
+
+footer a {
+    text-decoration: none;
+    display: inline-block;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: transparent;
+    border: 1px dashed #333;
+    color: #333;
+    margin: 5px;
+}
+
+footer a:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+footer a .icons {
+    margin-top: 12px;
+    display: inline-block;
+    font-size: 20px;
+}
+
+header {
+    max-width: 700px;
+    margin: 2em auto;
+    font: 24px/1.6 "Libre Baskerville";
+    text-align: center;
+    padding: 0 20px;
+}
+
+header p {
+    margin-bottom: 15px;
+}
+
+main {
+    position: relative;
+    margin: 5em auto;
+    padding: 0 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.your-face {
+    border: 2px dashed #ccc;
+    cursor: pointer;
+    position: relative;
+    border-radius: 4px;
+    width: 100%;
+    padding: 20px;
+    display: block;
+}
+
+.your-face .image-persuader {
+    text-align: center;
+    font-weight: 700;
+    color: #555;
+}
+
+.your-face input {
+    display: none;
+}
+
+.design {
+    background: #f6f6f6;
+    min-height: 550px;
+    width: 560px;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1), 0 5px 20px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    overflow: visible !important;
+}
+
+.design .alphabet {
+    text-align: center;
+    font-weight: 700;
+    font-size: 20px;
+    letter-spacing: 1px;
+}
+
+.design .sense {
+    padding-left: 30px;
+    background: #f6f6f6;
+}
+
+.sense-box {
+    margin-top: 1em;
+    margin-bottom: 2em;
+    margin-left: 20px;
+    background: #f6f6f6;
+    width: 85%;
+    min-height: 120px;
+    background: #FFFFFF;
+    background-blend-mode: darken;
+    border: 1px solid rgba(0, 0, 0, 0.85);
+    border-radius: 4px;
+}
+
+.design section {
+    padding: 0 35px;
+    margin-top: 2em;
+}
+
+.design .start {
+    margin: 15px 0;
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 4px #FFFF;
+    width: 100%;
+}
+
+.design .word {
+    margin-top: 1em;
+    font: 700 20px/0.4 "Libre Baskerville", serif;
+    word-break: break-all;
+}
+
+.design .type {
+    font: italic 500 15px "Libre Baskerville", serif;
+    margin: 10px 0;
+}
+
+.design .context {
+    font: 13px "Libre Baskerville", serif;
+    line-height: 1.5;
+    margin: 10px 0;
+    width: 100%;
+}
+
+.design .image {
+    font-style: italic;
+    text-align: center;
+    margin: 3em 0;
+    width: 100%;
+    overflow: hidden;
+}
+
+.design .image #imager {
+    width: auto;
+    height: 300px;
+    border: 1px solid;
+    margin: auto;
+    position: relative;
+}
+
+.design .image p {
+    display: block;
+    margin-top: 8px;
+}
+
+
+/*forms*/
+
+form.inputs {
+    margin: 0;
+    width: 450px;
+    padding: 30px;
+    border: 2px solid #ccc;
+    border-width: 2px 0 2px 2px;
+}
+
+form.inputs h2 {
+    font: 700 10px/1.2 "Libre Baskerville", serif;
+    text-align: center;
+    margin-bottom: 2em;
+}
+
+.input__wrapper {
+    position: relative;
+    margin: 20px 0 0;
+}
+
+.input__wrapper label {
+    position: absolute;
+    background: #fff;
+    top: -15px;
+    left: 15px;
+    display: inline-block;
+    padding: 5px 8px;
+    font-weight: 700;
+    color: #555;
+}
+
+.input__wrapper input[type=text],
+.input__wrapper textarea {
+    height: 54px;
+    padding: 22px;
+    border-radius: 4px;
+    border: 2px solid #ccc;
+    outline: none;
+    width: 100%;
+}
+
+.input__wrapper input[type=text]:focus,
+.input__wrapper textarea:focus {
+    border-color: purple;
+}
+
+.input__wrapper input[type=text]:focus+label,
+.input__wrapper textarea:focus+label {
+    color: purple;
+}
+
+.input__wrapper textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+input[type=radio] {
+    opacity: 0;
+    position: absolute;
+}
+
+input[type=radio]:checked+label:after {
+    content: "";
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    top: 7px;
+    left: -18px;
+    background: #555;
+    border-radius: 50%;
+}
+
+input[type=radio]+label {
+    position: relative;
+    top: 0;
+    padding: 0 5px;
+    margin: 0 50px 0 8px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+input[type=radio]+label:before {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border: 2px solid;
+    border-radius: 50%;
+    left: -22px;
+    top: 3px;
+}
+
+.radio-label {
+    margin-bottom: 50px;
+}
+
+.radio-label span:nth-child(1) {
+    font-weight: 700;
+    color: #555;
+    display: block;
+    margin: 0 0 15px;
+}
+
+#disambiguate {
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 16px;
+    padding: 15px 5px;
+}
+
+@media screen and (max-width: 1100px) {
+    form.inputs {
+        flex: 1 1 100%;
+        border-width: 2px;
+        margin-bottom: 4em;
+    }
+}
+
+#loading {
+    position: relative;
+    left: 45%;
+    margin-top: 30%;
+    width: 50px;
+    height: 50px;
+    border: 5px solid #ccc;
+    border-top-color: #333;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.alert {
+    position: relative;
+    text-align: center;
+    left: 10%;
+    width: 80%;
+    font-size: 14px;
+    padding: 0.2rem 0.1rem;
+    margin-bottom: 1.2rem;
+    border: 1px solid transparent;
+    border-radius: .475rem
+}
+
+.alert-warning {
+    color: #665000;
+    background-color: #fff4cc;
+    border-color: #ffeeb3
+}
+
+.alert-danger {
+    color: #E32727;
+    background-color: #F6D6D6;
+    border-color: #FBD3D3
+}

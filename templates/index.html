@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>WSD APP</title>
+  <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+  <link rel='stylesheet'
+    href='https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css'>
+  <link rel="stylesheet" href="/static/style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+
+<body>
+  <!-- partial:index.partial.html -->
+  <header>
+    <p><em>Word Sense Disambiguation </em>Bahasa Indonesia <br>Menggunakan Algoritma <em>Simplified Lesk</em></p>
+  </header>
+  <div>
+    <div id="navbar" class="flex flex-row w-10/12 mx-auto gap-8 font-bold">
+      <div id="demo-button"
+        class="cursor-pointer hover:underline hover:underline-offset-8 focus:underline focus:underline-offset-8">Demo
+      </div>
+      <div id="eval-button"
+        class="cursor-pointer hover:underline hover:underline-offset-8 focus:underline focus:underline-offset-8">
+        Evaluation</div>
+    </div>
+    <div id="demo" class="hidden">
+      <main>
+        <form class="inputs" id="wsd-form" autocomplete="off">
+          <div class="alert alert-warning" id="required-alert" style="display: none;">Silahkan lengkapi seluruh data.
+          </div>
+          <div class="alert alert-danger" id="error-alert" style="display: none;">Terjadi kesalahan.<br>Silahkan refresh
+            halaman dan coba lagi.</div>
+          <div class="input__wrapper">
+            <textarea class="js-mirror" id="sentence1" required></textarea>
+            <label>Kalimat 1</label>
+          </div>
+          <div class="input__wrapper">
+            <textarea class="js-mirror" id="sentence2" required></textarea>
+            <label>Kalimat 2</label>
+          </div>
+          <div class="input__wrapper">
+            <input class="js-mirror" id="word" type="text" maxlength="20" required="required" />
+            <label>Kata Ambigu</label>
+          </div>
+          <div class="input__wrapper">
+            <input class="rounded-md hover:shadow-md font-semibold bg-indigo-500 hover:bg-indigo-600 text-white"
+              id="disambiguate" type="button" value="Disambiguasi"></input>
+          </div>
+        </form>
+        <section class="design">
+          <div class="alphabet js-alphabet">Hasil</div>
+          <div id="result">
+            <div id="loading" style="display: none;">
+            </div>
+          </div>
+        </section>
+      </main>
+      <section id="result-template" style="visibility: hidden;">
+        <p class="start js-explanation">Disambiguasi makna yang tepat untuk kata "<strong id="s-word">(Kata
+            Ambigu)</strong>" pada kalimat "<strong id="s-sentence">(Kalimat 1)</strong>":
+        </p>
+        <div class="sense sense-box">
+          <div class="word js-word">Madu</div>
+          <div class="type js-type">(noun)</div>
+          <p class="context js-explanation">Cairan yang banyak mengandung zat gula pada sarang lebah atau bunga (rasanya
+            manis)
+          </p>
+        </div>
+      </section>
+    </div>
+    <div class="hidden w-full mx-auto my-4 justify-center" id="evaluation">
+      <div class="w-7/12 mx-auto text-center">
+        <form id="showing-data">
+          <label class="text-md font-semibold" for="filter-data">Jumlah Data :</label>
+          <select name="filter-data" id="filter-data"
+            class="rounded-md text-md mx-4 py-2 px-2 outline outline-gray-800 focus:outline-gray-800">
+            <option value="100">100</option>
+            <option value="200">200</option>
+            <option value="300">300</option>
+          </select>
+          <input type="submit"
+            class="bg-gray-100 rounded-md py-2 px-2 text-center hover:bg-gray-300 outline outline-gray-800 shadow"
+            value="Proses">
+        </form>
+      </div>
+      <section id="evaluasi-data" class="hidden">
+        <section id="statistic" class="text-white my-8 w-7/12 mx-auto font-sans">
+          <div class="container px-5 py-4 mx-auto">
+            <!-- <div class="flex flex-col text-center w-full mb-2"> -->
+            <!-- <h1 class="sm:text-lg text-xl font-medium title-font mb-4 text-gray-900">Dataset Evaluation
+              </h1> -->
+            <!-- <p class="lg:w-2/3 mx-auto leading-relaxed text-black text-xl mb-2"></p> -->
+            <!-- </div> -->
+            <div class="flex flex-wrap -m-3 text-center">
+              <div class="p-4 md:w-1/3 sm:w-1/2 w-full">
+                <div class="bg-indigo-500 rounded-lg p-2">
+                  <h2 class="title-font font-medium text-2xl text-white">75</h2>
+                  <p class="leading-relaxed">Prediksi Makna Benar</p>
+                </div>
+              </div>
+              <div class="p-4 md:w-1/3 sm:w-1/2 w-full">
+                <div class="bg-indigo-500 rounded-lg p-2">
+                  <h2 class="title-font font-medium text-2xl text-white">25</h2>
+                  <p class="leading-relaxed">Prediksi Makna Salah</p>
+                </div>
+              </div>
+              <div class="p-4 md:w-1/3 sm:w-1/2 w-full">
+                <div class="bg-indigo-500 rounded-lg p-2">
+                  <h2 class="title-font font-medium text-2xl text-white">80%</h2>
+                  <p class="leading-relaxed">Akurasi</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section id="table-data" class="w-10/12 mx-auto">
+          <!-- <p class="text-lg text-center font-bold m-5">Detail Data</p> -->
+          <div class="overflow-y-auto"></div>
+          <table id="detail-table"
+            class="h-5 rounded-t-lg m-5 w-full overflow-y-auto mx-auto text-center outline outline-gray-200">
+            <thead class="bg-gray-200 my-auto">
+              <tr class="border-b-2 border-gray-300 font-bold">
+                <th class="px-4 py-3 justify-center">Kalimat</th>
+                <th class="px-8 py-3 w-1/8">Kata Ambigu</th>
+                <th class="px-4 py-3">Predicted Sense</th>
+                <th class="px-8 py-3">Keterangan</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+          <div id="pagination" class="flex items-center justify-center"></div>
+        </section>
+      </section>
+    </div>
+  </div>
+  </div>
+
+  <!-- partial -->
+  <script src='https://code.jquery.com/jquery-3.6.0.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js'></script>
+  <script src='https://superal.github.io/canvas2image/canvas2image.js'></script>
+  <!-- <script src="./script.js"></script> -->
+
+  <script>
+    const demoButton = document.getElementById('demo-button');
+    const evalButton = document.getElementById('eval-button');
+    const demoDiv = document.getElementById('demo');
+    const evalDiv = document.getElementById('evaluation');
+
+    // Show the demo div by default
+    demoButton.classList.add('underline', 'underline-offset-8');
+    demoDiv.style.display = 'block';
+
+    // Add event listener for demo button click
+    demoButton.addEventListener('click', () => {
+      demoButton.classList.add('underline', 'underline-offset-8');
+      evalButton.classList.remove('underline', 'underline-offset-8');
+      demoDiv.style.display = 'block';
+      evalDiv.style.display = 'none';
+    });
+
+    // Add event listener for evaluation button click
+    evalButton.addEventListener('click', () => {
+      evalButton.classList.add('underline', 'underline-offset-8');
+      demoButton.classList.remove('underline', 'underline-offset-8');
+      evalDiv.style.display = 'block';
+      demoDiv.style.display = 'none';
+    });
+
+    const wsdbutton = document.getElementById("disambiguate");
+    wsdbutton.addEventListener('click', (event) => {
+      // event.preventDefault()
+
+      let sentence1 = $('#sentence1').val()
+      let sentence2 = $('#sentence2').val()
+      let word = $('#word').val()
+
+      if (!sentence1 || !sentence2 || !word) {
+        $("#required-alert").show();
+
+        setTimeout(() => {
+          $("#required-alert").hide();
+        }, 3000);
+
+      } else {
+        $("#required-alert").hide();
+        $("#loading").show();
+
+        $.ajax({
+          url: "/wsd",
+          method: "POST",
+          dataType: "json",
+          contentType: "application/json",
+          data: JSON.stringify({ // Data to send to the server
+            "sentences": [sentence1, sentence2],
+            "word": word
+          }),
+          success: function (data) {
+            $("#loading").hide();
+            console.log(data)
+            renderResult(data)
+            var textareas = document.querySelectorAll('.js-mirror');
+            for (const input of textareas) {
+              input.value = '';
+            }
+          },
+          error: function (xhr, status, error) {
+            console.log("Error: " + error);
+
+            $("#loading").hide();
+            $("#error-alert").show();
+            setTimeout(() => {
+              $("#error-alert").hide();
+            }, 3000);
+
+          }
+        })
+      }
+
+    })
+
+    function renderResult(data) {
+      $('#result').text("")
+      data.forEach(el => {
+        let template = $('#result-template').clone()
+        $(template).css('visibility', 'visible')
+        $(template).find('strong#s-word').text(el.word)
+        $(template).find('strong#s-sentence').text(el.sentence)
+        $(template).find('div.word').text(el.word)
+        $(template).find('div.type').text("(" + el.type + ")")
+        $(template).find('p.context').text(el.sense)
+        $('#result').append(template)
+      });
+    }
+
+    $("#showing-data").submit(function (event) {
+      event.preventDefault(); // Prevent the default form submission
+      var selectedValue = parseInt($("#filter-data").val()); // Get the selected value from the dropdown
+
+      // Make the AJAX request
+      $.ajax({
+        url: "/evaluate",
+        type: "POST",
+        data: {
+          number_rows: selectedValue
+        },
+        success: function (response) {
+          console.log(response);
+          // Show the "evaluasi-data" section
+          $("#evaluasi-data").removeClass("hidden");
+          // $("#statistic div:nth-child(1) p").text(`Berikut merupakan evaluasi dataset sebanyak ${selectedValue} data`)
+          // Update the statistics section
+          $("#statistic div:nth-child(1) h2").text(response.number_of_predict_success);
+          $("#statistic div:nth-child(2) h2").text(response.number_of_predict_failed);
+          $("#statistic div:nth-child(3) h2").text(response.accuracy);
+
+          // Render the table with pagination
+          renderTable(response.data);
+        },
+        error: function () {
+          console.log("Error occurred during the Evaluate request.");
+        }
+      });
+    });
+
+    function renderTable(data) {
+      var perPage = 10; // Number of rows per page
+      var totalPages = Math.ceil(data.length / perPage);
+      var currentPage = 1; // Track the current page
+
+      // Generate the pagination links
+      var pagination = "";
+      for (var i = 1; i <= totalPages; i++) {
+        var isActive = i === currentPage ? "bg-gray-200" : ""; // Add active background color
+        pagination += `<a href="#" class="px-2 py-1 mx-1 rounded hover:bg-gray-300 ${isActive}" data-page="${i}">${i}</a>`;
+      }
+
+      // Display the pagination links
+      $("#pagination").html(pagination);
+
+      // Show the first page of data by default
+      showPage(currentPage, data);
+
+      // Handle pagination link click event
+      $("#pagination a").click(function (e) {
+        e.preventDefault();
+        currentPage = $(this).data("page");
+        showPage(currentPage, data);
+
+        // Update active background color
+        $("#pagination a").removeClass("bg-gray-200");
+        $(this).addClass("bg-gray-200");
+      });
+    }
+
+    function showPage(page, data) {
+      var perPage = 10; // Number of rows per page
+      var startIndex = (page - 1) * perPage;
+      var endIndex = startIndex + perPage;
+      var currentPageData = data.slice(startIndex, endIndex);
+
+      // Generate the table rows with alternating background colors
+      var rows = currentPageData.map(function (item, index) {
+        var bgColor = index % 2 === 0 ? "bg-white" : "bg-gray-100"; // Alternating background colors
+        return `<tr class="${bgColor}">
+          <td class="px-4 py-3" style="text-align:justify;">${item.Kalimat}</td>
+          <td class="px-2 py-3">${item['Kata Ambigu']}</td>
+          <td class="px-4 py-3" style="text-align:justify;">${item['Predicted Sense']}</td>
+          <td class="px-4 py-3">${item.label}</td>
+        </tr>`;
+      }).join("");
+
+      // Display the table rows
+      $("#detail-table tbody").html(rows);
+    }
+  </script>
+
+</body>
+
+</html>

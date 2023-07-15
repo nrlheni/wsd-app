@@ -1,0 +1,139 @@
+          precision    recall  f1-score   support
+(cerita) percintaan       1.00      1.00      1.00         1
+(ditulis dengan huruf kecil) perempuan       1.00      1.00      1.00         1
+alat dari besi baja yang bergerigi, dipakai untuk meratakan (menajamkan dan sebagainya) sesuatu       0.00      0.00      0.00         0
+alat untuk membuat bulatan (lingkaran, mengukur jarak pada peta, dan sebagainya), berupa benda yang berkaki dua yang dapat dilebarkan dan disempitkan langkahnya atau ukurannya       1.00      1.00      1.00         1
+alat untuk mencapai suatu maksud (seperti membongkar rahasia, memecahkan masalah, menentukan kalah menang, atau berhasil tidaknya sesuatu)       0.00      0.00      0.00         1
+alat untuk menghidupkan atau menjalankan mesin (mobil dan sebagainya)       0.50      1.00      0.67         1
+ambil alih secara paksa, disertai ancaman (tentang pesawat dan sebagainya)       1.00      1.00      1.00         1
+asing; lain; bukan keluarga       1.00      1.00      1.00         1
+bagian besar dalam suatu drama atau lakon (terdiri atas beberapa adegan)       0.00      0.00      0.00         0
+bagian dari suatu keseluruhan proses, kejadian, atau peristiwa       0.00      0.00      0.00         1
+bagian kayu yang keras; inti kayu       1.00      1.00      1.00         1
+bagian permainan yang waktunya tertentu; ronde       1.00      1.00      1.00         1
+bagian tubuh yang di atas leher (pada manusia dan beberapa jenis hewan merupakan tempat otak, pusat jaringan saraf, dan beberapa pusat indra)       0.50      1.00      0.67         1
+bagian tumbuhan yang akan menjadi buah, biasanya elok warnanya dan harum baunya; kembang       0.25      1.00      0.40         1
+                                                  barang yang ditumbuk menjadi tepung halus       1.00      1.00      1.00         1
+   benar       0.00      0.00      0.00         0
+                                                   benda langit yang mampu memancarkan cahaya dan memproduksi energi sendiri, misalnya matahari       0.00      0.00      0.00         1
+                 berhati-hati dalam membelanjakan uang, dan sebagainya; tidak boros; cermat       1.00      1.00      1.00         1
+    berlari cepat-cepat; melarikan diri       1.00      1.00      1.00         1
+         bersangkutan dengan batin dan watak manusia, yang bukan bersifat badan atau tenaga       0.50      1.00      0.67         1
+          bersuhu rendah apabila dibandingkan dengan suhu tubuh manusia; tidak panas; sejuk       0.50      1.00      0.67         1
+                                  bidang tanah datar yang miring; bidang tanah yang lebih tinggi daripada yang lain (biasanya ditumbuhi rumput)       1.00      1.00      1.00         1
+                             biji jarak       0.00      0.00      0.00         1
+                                          binatang kecil yang berkulit keras, berupa kumbang yang suka makan kayu, balok, beras, dan sebagainya       1.00      1.00      1.00         1
+                              buah apel       0.00      0.00      0.00         5
+                    buka lebar; bentang       1.00      1.00      1.00         2
+        cairan yang banyak mengandung zat gula pada sarang lebah atau bunga (rasanya manis)       1.00      1.00      1.00         2
+                                      campuran berbagai-bagai gas yang meliputi bumi; udara       1.00      1.00      1.00         1
+    ceri       0.00      0.00      0.00         0
+   damai       0.00      0.00      0.00         0
+       gangguan pernapasan yang sering bersifat alergis, ditandai dengan sulit bernapas dan rasa sesak dalam dada; penyakit sesak napas; bengek       1.00      1.00      1.00         3
+            gelembung-gelembung putih kecil-kecil (seperti pada sabun dan sebagainya); buih       1.00      1.00      1.00         1
+                     gerakan kaki (ke depan, ke belakang, ke kiri, ke kanan) waktu berjalan       1.00      1.00      1.00         1
+habis sama sekali; hilang lenyap; punah       1.00      1.00      1.00         2
+  hampar       0.00      0.00      0.00         1
+                                      hampir tidak berantara; dekat sekali (tidak renggang)       0.00      0.00      0.00         0
+ imbalan jasa untuk penggunaan uang atau modal yang dibayar pada waktu tertentu berdasarkan ketentuan atau kesepakatan, umumnya dinyatakan sebagai persentase dari modal pokok       0.00      0.00      0.00         2
+              istri sah yang lain dari seorang suami berdasarkan pandangan istri pertamanya       1.00      1.00      1.00         4
+                           jauh ke bawah (dari permukaan); jauh masuk ke tengah (dari tepi)       0.00      0.00      0.00         0
+       jenis untuk berbagai-bagai bunga       1.00      0.33      0.50         3
+                         julukan yang berhubungan dengan keadaan atau tabiat orang; sebutan       1.00      1.00      1.00         1
+                                       kabel yang aliran listriknya berpotensi lebih rendah       1.00      1.00      1.00         1
+         kacau; ribut; gaduh; huru-hara       1.00      0.33      0.50         3
+                     kantong selaput dalam perut, tempat janin (bayi); peranakan; kandungan       1.00      1.00      1.00         1
+                       kantor tempat kirim-mengirim surat, uang, dan sebagainya; kantor pos       1.00      1.00      1.00         1
+                                  karet gembus dan empuk, biasanya untuk isi jok atau kasur       1.00      1.00      1.00         1
+                                       kata depan untuk menandai tempat yang mengandung isi       0.00      0.00      0.00         1
+                  kata penggolong bagi barang-barang yang luas seperti tanah, sawah, ladang       1.00      1.00      1.00         1
+                                                   kata untuk menyatakan kekerapan tindakan       0.67      1.00      0.80         2
+               keadaan (tempat, wujud, rupa, dan sebagainya) yang semula; pangkal permulaan       1.00      1.00      1.00         1
+                                           keadaan udara (bukan suhu, cuaca, dan lain-lain)       1.00      1.00      1.00         1
+                       keinginan; nafsu       1.00      1.00      1.00         1
+                              kekuasaan yang benar atas sesuatu atau untuk menuntut sesuatu       1.00      1.00      1.00         1
+                     keluarga atau kaum       1.00      1.00      1.00         1
+                 kenal (akan); mengenal       0.00      0.00      0.00         0
+                                           kerap (tentang tanaman, anyaman, dan sebagainya)       1.00      1.00      1.00         1
+                             kewenangan       0.00      0.00      0.00         1
+kubus kecil bersisi enam (biasanya terbuat dari kayu, tulang, gading, atau plastik), pada keenam sisinya diberi mata satu sampai enam yang diatur sedemikian rupa sehingga dua sisi yang saling berhadapan selalu berjumlah tujuh (digunakan dalam permainan, berjudi, dan sebagainya)       1.00      1.00      1.00         1
+                                                   kurang baik; menyimpang dari ukuran umum       1.00      1.00      1.00         1
+       lazim; tidak aneh; lumrah; wajar       1.00      1.00      1.00         1
+                  lecet (tentang kulit)       0.00      0.00      0.00         2
+                             lembar kertas yang berjilid, berisi tulisan atau kosong; kitab       1.00      1.00      1.00         2
+         lilin (dipakai untuk membatik)       1.00      1.00      1.00         1
+                           macam; jenis       0.00      0.00      0.00         1
+                                              mahir benar; sangat mendalam dalam suatu ilmu       1.00      1.00      1.00         1
+                 makanan dari kedelai putih yang digiling halus-halus, direbus, dan dicetak       1.00      0.20      0.33         5
+ mampu (kuasa melakukan sesuatu); dapat       1.00      1.00      1.00         1
+  memang       0.00      0.00      0.00         1
+        mendongkol; marah yang tertahan       1.00      1.00      1.00         2
+                          mengerti sesudah melihat (menyaksikan, mengalami, dan sebagainya)       0.40      1.00      0.57         2
+                     muka dari lembaran buku (majalah, surat kabar, dan sebagainya); pagina       1.00      0.50      0.67         2
+  mundur       1.00      1.00      1.00         1
+                 nabi, rasul, dan nama manusia laki-laki pertama yang diciptakan oleh Tuhan       1.00      1.00      1.00         1
+                                naik banding kepada pengadilan yang lebih tinggi; permohonan pemeriksaan ulang pada pengadilan tingkat kedua (pengadilan tinggi) terhadap keputusan pengadilan tingkat pertama (pengadilan negeri)       0.17      1.00      0.29         1
+                      nama (bagi Tuhan)       1.00      1.00      1.00         1
+             nama yang dipakai untuk beberapa jenis tumbuhan yang tidak berkerabat satu sama lain, seperti -- bangkai, -- ketongkeng, -- manila       0.00      0.00      0.00         0
+                                paham benar-benar (tentang ilmu pengetahuan dan sebagainya)       1.00      1.00      1.00         1
+                            panas dan cahaya yang berasal dari sesuatu yang terbakar; nyala       0.50      1.00      0.67         1
+ pekarangan rumah (sekolah dan sebagainya); tanah di sekitar rumah (sekolah dan sebagainya)       0.83      1.00      0.91         5
+                           pemimpin; ketua (kantor, pekerjaan, perkumpulan, dan sebagainya)       0.00      0.00      0.00         1
+ pendapatan atas setiap investasi modal       0.00      0.00      0.00         1
+                                         penggabungan (tentang salat wajib); antara salat Zuhur dan salat Asar atau salat Magrib dan salat Isya       1.00      1.00      1.00         1
+                                        penuh minat dan perhatian; (dengan) saksama; teliti       1.00      1.00      1.00         1
+                penyakit bengkak pada leher depan karena kelenjar yang menjadi besar; beguk       1.00      1.00      1.00         2
+                             perasaan yang menggelora (tentang cinta, perjuangan); semangat       0.00      0.00      0.00         1
+                                                   perawatan dengan menginap di rumah sakit       1.00      1.00      1.00         1
+       perdu, tinggi 2 m, batangnya mudah patah, daunnya besar berwarna hijau kebiru-biruan, buahnya berbiji polong, bijinya sebesar kacang tanah, ketika tua berwarna hitam, dapat digunakan sebagai bahan minyak pelumas; dulang       0.00      0.00      0.00         0
+                                  perkakas pertanian yang terbuat dari kayu atau besi untuk menggemburkan dan membalikkan tanah; luku; tenggala       1.00      1.00      1.00         1
+                                                   permukaan (yang) rata dan tentu batasnya       0.00      0.00      0.00         0
+               pernyataan hormat; tabik       0.00      0.00      0.00         1
+                           pertemuan (kumpulan) untuk membicarakan sesuatu; sidang; majelis       1.00      0.33      0.50         3
+        pesta perkawinan dan sebagainya       1.00      1.00      1.00         1
+                                        planet atau gugusan planet yang menjadi pegangan dalam astrologi untuk menentukan nasib seseorang; rasi       0.00      0.00      0.00         0
+                                   pokok atau pangkal suatu pendapat (ajaran, aturan); asas       0.00      0.00      0.00         0
+                           pokok; utama       0.00      0.00      0.00         0
+       pucuk yang masih muda; daun muda       1.00      1.00      1.00         1
+  pusing       1.00      1.00      1.00         2
+            rangkaian yang berturut-turut (tentang cerita, buku, peristiwa, dan sebagainya)       0.00      0.00      0.00         1
+                                ruang sela (panjang atau jauh) antara dua benda atau tempat       1.00      1.00      1.00         1
+                       rupa muka; wajah       1.00      1.00      1.00         1
+  saling       0.00      0.00      0.00         1
+                           sangat kikir       1.00      1.00      1.00         1
+   sebutan kehormatan, kebangsawanan, atau kesarjanaan yang biasanya ditambahkan pada nama orang seperti raden, tengku, doktor, sarjana ekonomi       0.00      0.00      0.00         0
+                            sedap; enak       1.00      1.00      1.00         1
+                  segi pandangan; aspek       0.00      0.00      0.00         1
+                                   seimbang; tidak ada yang menang dan tidak ada yang kalah       1.00      1.00      1.00         1
+        sikap; tindak-tanduk; perbuatan       1.00      1.00      1.00         1
+  sungai       0.00      0.00      0.00         1
+                                          tanah atau lantai yang agak tinggi di depan rumah       1.00      1.00      1.00         2
+                                               tanaman termasuk suku Myrtaceae, pohonnya bertajuk lebat, tingginya mencapai 25 m, daunnya berbentuk bulat telur atau lonjong, berbau harum, biasanya digunakan sebagai bumbu masak       0.00      0.00      0.00         1
+                                              tegang; berbahaya (tentang keadaan yang mungkin segera menimbulkan bencana perang dan sebagainya)       1.00      1.00      1.00         2
+                                       telapak sepatu pada bagian tumit yang relatif tinggi       1.00      1.00      1.00         2
+       tempat orang berjual beli; pekan       1.00      1.00      1.00         1
+                 tempat penjagaan (tentara, polisi, pengamat gunung berapi, dan sebagainya)       0.00      0.00      0.00         0
+                                              tempat pertemuan dua ruas (jari, buluh, tebu)       1.00      1.00      1.00         1
+                              terlampau hemat memakai harta bendanya; pelit; lokek; kedekut       0.00      0.00      0.00         1
+       terlempar kembali; berbalik arah       0.00      0.00      0.00         0
+                terpelanting; terpental       0.00      0.00      0.00         2
+   tertutup rapat (tentang mata); pejam       1.00      1.00      1.00         1
+     tidak aman karena banyak gangguan keamanan (seperti pencurian, perampokan, pembegalan)       0.00      0.00      0.00         0
+                                    tidak dapat melihat sesuatu dengan jelas (tentang mata)       1.00      1.00      1.00         1
+                                                 tidak menaruh belas kasihan; bengis; zalim       1.00      1.00      1.00         1
+                                         tidak ramah; kaku (tentang suasana dan sebagainya)       0.00      0.00      0.00         1
+                    tingkah; laku; ulah       0.00      0.00      0.00         0
+                       titik-titik air yang berjatuhan dari udara karena proses pendinginan       0.50      1.00      0.67         1
+                                               tutup atap rumah yang terbuat dari tanah liat yang dicetak dan dibakar, bermacam-macam bentuknya       1.00      1.00      1.00         3
+                                     ucapan as-salāmu ’alaikum wa raḥmatullāhi wa barakātuh       0.00      0.00      0.00         1
+ upacara       0.00      0.00      0.00         3
+                        wajib hadir dalam suatu upacara resmi (bersifat kemiliteran) untuk diketahui hadir tidaknya atau untuk mendengar amanat       0.00      0.00      0.00         0
+                                     waktu setelah matahari terbenam hingga matahari terbit       1.00      1.00      1.00         3
+                                                   yang datang dan sebagainya banyak-banyak       0.00      0.00      0.00         1
+                                                 zat minyak yang melekat pada daging; gemuk       1.00      1.00      1.00         1
+                              zat racun yang dapat menyebabkan luka, busuk, atau mati bagi sesuatu yang hidup (biasanya terdapat pada binatang)       1.00      1.00      1.00         2
+                 tempat penjagaan (tentara, polisi, pengamat gunung berapi, dan sebagainya)       0.00      0.00      0.00         1
+
+accuracy                           0.70       160
+                              macro avg       0.60      0.62      0.59       160
+                           weighted avg       0.72      0.70      0.68       160
