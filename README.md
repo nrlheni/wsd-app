@@ -5,8 +5,7 @@ Backend     : Python 3.9.7
 <br>Frontend    : HTML/CSS
 <br>Framework   : Flask
 
-### Author (S1 Thesis by):
-
+#### Author (S1 Thesis by):
 <br>Nurul Akhni
 <br>09021181924024
 <br>Faculty of Computer Science
