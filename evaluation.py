@@ -13,8 +13,8 @@ class Evaluation:
         actual_labels = []
         predicted_labels = []
 
-        for actual_senses, predicted_sense in zip(self.actual_senses, self.predicted_senses):
-            if actual_senses == predicted_sense:
+        for actual_sense, predicted_sense in zip(self.actual_senses, self.predicted_senses):
+            if actual_sense == predicted_sense:
                 actual_labels.append(1)
                 predicted_labels.append(1)
             else:
@@ -29,16 +29,19 @@ class Evaluation:
         correct_predictions = sum(1 for actual, predicted in zip(
             actual_labels, predicted_labels) if actual == predicted)
         total_instances = len(actual_labels)
-
+        failed_predictions = total_instances - correct_predictions
         accuracy = (correct_predictions / total_instances) * 100
-        return accuracy
+
+        return accuracy, correct_predictions, failed_predictions
 
 
 if __name__ == '__main__':
     # read in the data from the Excel file
-    # path = Path('asset/data/origin_dataset_stemming.xlsx')
-    path = Path('asset/data/origin_dataset_stopword.xlsx')
-    df = pd.read_excel(path)
+    # path = Path('asset/data/origin_dataset_stemming.xlsx') # 57.67%
+    # path = Path('asset/data/origin_dataset_stopword.xlsx')  # 54.67%
+    path = Path('asset/data/origin_dataset_stemming_stopword.xlsx')  # 58%
+    # path = Path('asset/data/origin_dataset_tanpa_stemming_stopword.xlsx')  # 57.33%
+
     df = pd.read_excel(path)
 
     actual_senses = df['Actual Sense'].tolist()
@@ -51,11 +54,13 @@ if __name__ == '__main__':
         df['Label'] = predicted_labels
         df.to_excel(path, index=False)
 
-    accuracy = wsd_evaluation.calculate_accuracy()
+    accuracy, correct, failed = wsd_evaluation.calculate_accuracy()
     print(accuracy)
 
     evaluation_result = {
-        'accuracy': '{:.2f}%'.format(accuracy)
+        'accuracy': '{:.2f}%'.format(accuracy),
+        'correct': correct,
+        'failed': failed,
     }
 
     print(json.dumps(evaluation_result, indent=2))

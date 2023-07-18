@@ -1,11 +1,8 @@
-import csv
-import json
-import unicodedata
 from flask import Flask, render_template, request
 from WSD import SimplifiedLesk
 from evaluation import Evaluation
 import pandas as pd
-import excel2json
+from pathlib import Path
 
 app = Flask(__name__)
 app.static_folder = 'static'
@@ -45,11 +42,20 @@ def eval():
         range_end = 101
 
     # read in the data from the Excel file
-    path = 'D:/NurulAkhni/NurulAkhni/SKRIPSI/skripsi-editable/program/wsd-app/asset/data/origin_dataset_v4.xlsx'
+    # path = Path('asset/data/origin_dataset_stemming.xlsx')
+    # path = Path('asset/data/origin_dataset_stopword.xlsx')
+    # path = Path('asset/data/origin_dataset_tanpa_stemming_stopword.xlsx')
+
+    path = Path('asset/data/origin_dataset_stemming_stopword.xlsx')
     df = pd.read_excel(path)
 
-    actual_senses = df[1:range_end]['Actual Sense'].tolist()
-    predicted_senses = df[1:range_end]['Predicted Sense'].tolist()
+    if number_rows == 100 or number_rows == 200:
+        actual_senses = df[1:range_end]['Actual Sense'].tolist()
+        predicted_senses = df[1:range_end]['Predicted Sense'].tolist()
+    else:
+        actual_senses = df['Actual Sense'].tolist()
+        predicted_senses = df['Predicted Sense'].tolist()
+
     wsd_evaluation = Evaluation(actual_senses, predicted_senses)
 
     if 'Label' not in df.columns:
@@ -57,10 +63,7 @@ def eval():
         df['Label'] = predicted_labels
         df.to_excel(path, index=False)
 
-    accuracy = wsd_evaluation.calculate_accuracy()
-
-    count_predict_success = df[1:range_end]['Label'].value_counts().get(1, 1)
-    count_predict_failed = df[1:range_end]['Label'].value_counts().get(0, 0)
+    accuracy, correct_predictions, failed_predictions = wsd_evaluation.calculate_accuracy()
 
     df['label'] = df.apply(
         lambda row: 'Tidak Sesuai' if row['Label'] == 0 else 'Sesuai', axis=1)
@@ -68,8 +71,8 @@ def eval():
 
     evaluation_result = {
         'accuracy': '{:.2f}%'.format(accuracy),
-        'number_of_predict_success': int(count_predict_success),
-        'number_of_predict_failed': int(count_predict_failed),
+        'number_of_predict_success': int(correct_predictions),
+        'number_of_predict_failed': int(failed_predictions),
         'data': data
     }
 

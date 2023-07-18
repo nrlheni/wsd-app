@@ -45,7 +45,7 @@ class Preprocessing:
     def pipeline(self, sentence):
         token = self.tokenize(sentence)
         token = self.stopword_removal(token)
-        # token = self.stem(token)
+        token = self.stem(token)
 
         return token
 
@@ -157,10 +157,10 @@ class SimplifiedLesk:
 
 if __name__ == '__main__':
     # read in the data from the Excel file
-    # path = 'D:/NurulAkhni/NurulAkhni/SKRIPSI/skripsi-editable/program/wsd-app/asset/data/origin_dataset_stemming_stopword.xlsx'
-    # path = 'D:/NurulAkhni/NurulAkhni/SKRIPSI/skripsi-editable/program/wsd-app/asset/data/origin_dataset_tanpa_stemming_stopword.xlsx'
+    path = Path('asset/data/origin_dataset_stemming_stopword.xlsx')
+    # path = Path('asset/data/origin_dataset_tanpa_stemming_stopword.xlsx')
     # path = Path('asset/data/origin_dataset_stemming.xlsx')
-    path = Path('asset/data/origin_dataset_stopword.xlsx')
+    # path = Path('asset/data/origin_dataset_stopword.xlsx')
     df = pd.read_excel(path)
 
     # loop through the pairs of values in columns A and B
