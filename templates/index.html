@@ -60,7 +60,7 @@
         </section>
       </main>
       <section id="result-template" style="visibility: hidden;">
-        <p class="start js-explanation">Disambiguasi makna yang tepat untuk kata "<strong id="s-word">(Kata
+        <p class="start js-explanation">Makna yang tepat untuk kata "<strong id="s-word">(Kata
             Ambigu)</strong>" pada kalimat "<strong id="s-sentence">(Kalimat 1)</strong>":
         </p>
         <div class="sense sense-box">
@@ -72,19 +72,46 @@
         </div>
       </section>
     </div>
-    <div class="hidden w-full mx-auto my-4 justify-center" id="evaluation">
-      <div class="w-7/12 mx-auto text-center">
+    <div class="hidden w-full mx-auto my-8 justify-center" id="evaluation">
+      <div class="w-10/12 mx-auto ps-4 text-center">
         <form id="showing-data">
-          <label class="text-md font-semibold" for="filter-data">Jumlah Data :</label>
-          <select name="filter-data" id="filter-data"
-            class="rounded-md text-md mx-4 py-2 px-2 outline outline-gray-800 focus:outline-gray-800">
-            <option value="100">100</option>
-            <option value="200">200</option>
-            <option value="300">300</option>
-          </select>
-          <input type="submit"
-            class="bg-gray-100 rounded-md py-2 px-2 text-center hover:bg-gray-300 outline outline-gray-800 shadow"
-            value="Proses">
+          <div class="flex flex-row gap-2">
+            <div class="grid place-items-center">
+              <div class="grid w-[60rem] grid-cols-4 gap-2 text-xs rounded-xl bg-gray-200 p-2">
+                <div>
+                  <input type="radio" name="config" id="stemming" value="stemming" class="peer hidden" checked />
+                  <label for="stemming"
+                    class="block font-semibold cursor-pointer select-none rounded-xl p-2 text-center peer-checked:bg-blue-500 peer-checked:font-bold peer-checked:text-white">Stemming</label>
+                </div>
+
+                <div>
+                  <input type="radio" name="config" id="stopword" value="stopword" class="peer hidden" />
+                  <label for="stopword"
+                    class="block font-semibold cursor-pointer select-none rounded-xl p-2 text-center peer-checked:bg-blue-500 peer-checked:font-bold peer-checked:text-white">Stopword
+                    Removal</label>
+                </div>
+
+                <div>
+                  <input type="radio" name="config" id="stemming_stopword" value="dengan stemming stopword"
+                    class="peer hidden" />
+                  <label for="stemming_stopword"
+                    class="block font-semibold cursor-pointer select-none rounded-xl p-2 text-center peer-checked:bg-blue-500 peer-checked:font-bold peer-checked:text-white">Stemming
+                    & Stopword Removal</label>
+                </div>
+
+                <div>
+                  <input type="radio" name="config" id="without_stemming_stopword" value="tanpa stemming stopword"
+                    class="peer hidden" />
+                  <label for="without_stemming_stopword"
+                    class="block font-semibold cursor-pointer select-none rounded-xl p-2 text-center peer-checked:bg-blue-500 peer-checked:font-bold peer-checked:text-white">Tanpa
+                    Stemming & Stopword</label>
+                </div>
+              </div>
+            </div>
+            <input type="submit"
+              class="bg-blue-500 cursor-pointer rounded-md p-2 px-2 text-white text-center text-xs hover:bg-blue-300 shadow"
+              value="Proses">
+          </div>
         </form>
       </div>
       <section id="evaluasi-data" class="hidden">
@@ -121,11 +148,12 @@
           <!-- <p class="text-lg text-center font-bold m-5">Detail Data</p> -->
           <div class="overflow-y-auto"></div>
           <table id="detail-table"
-            class="h-5 rounded-t-lg m-5 w-full overflow-y-auto mx-auto text-center outline outline-gray-200">
+            class="h-5 rounded-t-lg m-5 w-full overflow-y-auto mx-auto text-xs text-center outline outline-gray-200">
             <thead class="bg-gray-200 my-auto">
               <tr class="border-b-2 border-gray-300 font-bold">
                 <th class="px-4 py-3 justify-center">Kalimat</th>
                 <th class="px-8 py-3 w-1/8">Kata Ambigu</th>
+                <th class="px-4 py-3">Actual Sense</th>
                 <th class="px-4 py-3">Predicted Sense</th>
                 <th class="px-8 py-3">Keterangan</th>
               </tr>
@@ -179,7 +207,7 @@
       let sentence2 = $('#sentence2').val()
       let word = $('#word').val()
 
-      if (!sentence1 || !sentence2 || !word) {
+      if (!sentence1 && !sentence2 || !word) {
         $("#required-alert").show();
 
         setTimeout(() => {
@@ -239,20 +267,19 @@
 
     $("#showing-data").submit(function (event) {
       event.preventDefault(); // Prevent the default form submission
-      var selectedValue = parseInt($("#filter-data").val()); // Get the selected value from the dropdown
-
+      var selectedValue = $("input[type='radio'][name='config']:checked").val(); // Get the selected value from the dropdown
+      console.log(selectedValue);
       // Make the AJAX request
       $.ajax({
         url: "/evaluate",
         type: "POST",
         data: {
-          number_rows: selectedValue
+          configuration: selectedValue
         },
         success: function (response) {
           console.log(response);
           // Show the "evaluasi-data" section
           $("#evaluasi-data").removeClass("hidden");
-          // $("#statistic div:nth-child(1) p").text(`Berikut merupakan evaluasi dataset sebanyak ${selectedValue} data`)
           // Update the statistics section
           $("#statistic div:nth-child(1) h2").text(response.number_of_predict_success);
           $("#statistic div:nth-child(2) h2").text(response.number_of_predict_failed);
@@ -273,27 +300,49 @@
       var currentPage = 1; // Track the current page
 
       // Generate the pagination links
-      var pagination = "";
-      for (var i = 1; i <= totalPages; i++) {
-        var isActive = i === currentPage ? "bg-gray-200" : ""; // Add active background color
-        pagination += `<a href="#" class="px-2 py-1 mx-1 rounded hover:bg-gray-300 ${isActive}" data-page="${i}">${i}</a>`;
+      function generatePaginationLinks() {
+        var pagination = "";
+        var maxPagesToShow = 5; // Maximum number of page links to display at a time
+        var startPage = 1;
+        var endPage = Math.min(maxPagesToShow, totalPages);
+
+        if (currentPage > maxPagesToShow) {
+          startPage = currentPage - Math.floor(maxPagesToShow / 2);
+          endPage = currentPage + Math.floor(maxPagesToShow / 2);
+          if (endPage > totalPages) {
+            endPage = totalPages;
+            startPage = totalPages - maxPagesToShow + 1;
+          }
+        }
+
+        if (currentPage > 1) {
+          pagination += `<a href="#" class="px-2 py-1 mx-1 rounded hover:bg-gray-300" data-page="${currentPage - 1}"><</a>`;
+        }
+
+        for (var i = startPage; i <= endPage; i++) {
+          var isActive = i === currentPage ? "bg-gray-200" : ""; // Add active background color
+          pagination += `<a href="#" class="px-2 py-1 mx-1 rounded hover:bg-gray-300 ${isActive}" data-page="${i}">${i}</a>`;
+        }
+
+        if (currentPage < totalPages) {
+          pagination += `<a href="#" class="px-2 py-1 mx-1 rounded hover:bg-gray-300" data-page="${currentPage + 1}">></a>`;
+        }
+
+        return pagination;
       }
 
       // Display the pagination links
-      $("#pagination").html(pagination);
+      $("#pagination").html(generatePaginationLinks());
 
       // Show the first page of data by default
       showPage(currentPage, data);
 
-      // Handle pagination link click event
-      $("#pagination a").click(function (e) {
+      // Handle pagination link click event using event delegation
+      $("#pagination").on("click", "a", function (e) {
         e.preventDefault();
         currentPage = $(this).data("page");
+        $("#pagination").html(generatePaginationLinks()); // Update pagination links
         showPage(currentPage, data);
-
-        // Update active background color
-        $("#pagination a").removeClass("bg-gray-200");
-        $(this).addClass("bg-gray-200");
       });
     }
 
@@ -309,6 +358,7 @@
         return `<tr class="${bgColor}">
           <td class="px-4 py-3" style="text-align:justify;">${item.Kalimat}</td>
           <td class="px-2 py-3">${item['Kata Ambigu']}</td>
+          <td class="px-4 py-3" style="text-align:justify;">${item['Actual Sense']}</td>
           <td class="px-4 py-3" style="text-align:justify;">${item['Predicted Sense']}</td>
           <td class="px-4 py-3">${item.label}</td>
         </tr>`;

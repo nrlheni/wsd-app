@@ -30,31 +30,22 @@ def wsd():
 @app.route("/evaluate", methods=["POST"])
 def eval():
     # Retrieve the selected data value
-    number_rows = int(request.form.get('number_rows'))
+    config = request.form.get('configuration')
 
-    if number_rows == 100:
-        range_end = 101
-    elif number_rows == 200:
-        range_end = 201
-    elif number_rows == 300:
-        range_end = 301
+    if config == 'stemming':
+        path = Path('asset/data/origin_dataset_stemming.xlsx')
+    elif config == 'stopword':
+        path = Path('asset/data/origin_dataset_stopword.xlsx')
+    elif config == 'dengan stemming stopword':
+        path = Path('asset/data/origin_dataset_stemming_stopword.xlsx')
     else:
-        range_end = 101
+        path = Path('asset/data/origin_dataset_tanpa_stemming_stopword.xlsx')
 
     # read in the data from the Excel file
-    # path = Path('asset/data/origin_dataset_stemming.xlsx')
-    # path = Path('asset/data/origin_dataset_stopword.xlsx')
-    # path = Path('asset/data/origin_dataset_tanpa_stemming_stopword.xlsx')
-
-    path = Path('asset/data/origin_dataset_stemming_stopword.xlsx')
     df = pd.read_excel(path)
 
-    if number_rows == 100 or number_rows == 200:
-        actual_senses = df[1:range_end]['Actual Sense'].tolist()
-        predicted_senses = df[1:range_end]['Predicted Sense'].tolist()
-    else:
-        actual_senses = df['Actual Sense'].tolist()
-        predicted_senses = df['Predicted Sense'].tolist()
+    actual_senses = df['Actual Sense'].tolist()
+    predicted_senses = df['Predicted Sense'].tolist()
 
     wsd_evaluation = Evaluation(actual_senses, predicted_senses)
 
@@ -67,7 +58,7 @@ def eval():
 
     df['label'] = df.apply(
         lambda row: 'Tidak Sesuai' if row['Label'] == 0 else 'Sesuai', axis=1)
-    data = df[1:range_end].to_dict(orient='records')
+    data = df.to_dict(orient='records')
 
     evaluation_result = {
         'accuracy': '{:.2f}%'.format(accuracy),

@@ -140,6 +140,7 @@ class SimplifiedLesk:
 
     def predict_sense(self):
         context = self.preprocess.pipeline(self.sentence)
+        print('context:', context)
         dictionary = self._set_dictionary(self.word)
         overlap_scores = self._get_intersect(context, dictionary)
         max_overlap = self._calculate_overlap(overlap_scores)
@@ -173,7 +174,6 @@ if __name__ == '__main__':
             sentence, word)
         # Define the context sentence and the ambiguous word
         predict_sense = wsd.predict_sense()
-
         print(predict_sense)
 
         results.append(predict_sense['sense'])
