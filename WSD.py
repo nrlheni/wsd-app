@@ -9,6 +9,8 @@ import numpy as np
 import pandas as pd
 from sklearn.metrics import accuracy_score
 from pathlib import Path
+from dotenv import load_dotenv
+import os
 
 
 class Preprocessing:
@@ -60,8 +62,11 @@ class SimplifiedLesk:
     def _set_dictionary(self, word):
         dictionary = []
 
+        CREDENTIAL_EMAIL = os.getenv('KBBI_AUTH_USERNAME')
+        CREDENTIAL_PASS = os.getenv('KBBI_AUTH_PASS')
+
         # Get the sense for the word from kbbi
-        auth = AutentikasiKBBI("nurulakhni12@gmail.com", "Gmna10112")
+        auth = AutentikasiKBBI(CREDENTIAL_EMAIL, CREDENTIAL_PASS)
         kbbi_result = json.dumps(KBBI(word, auth).serialisasi(), indent=2)
         kbbi_result_json = json.loads(kbbi_result)
 
@@ -119,10 +124,8 @@ class SimplifiedLesk:
             if 'contoh' in sense and sense['contoh']:
                 example_dict = set(sense['contoh'])
                 sense_dict |= example_dict
-            print('preprocess dict: ', sense_dict)
             intersection = sense_dict.intersection(
                 context).difference(word)
-            print('intersect-makna-'+str(i)+' : ', intersection)
             overlap_scores[i] = len(intersection)
 
         return overlap_scores
@@ -140,7 +143,6 @@ class SimplifiedLesk:
 
     def predict_sense(self):
         context = self.preprocess.pipeline(self.sentence)
-        print('context:', context)
         dictionary = self._set_dictionary(self.word)
         overlap_scores = self._get_intersect(context, dictionary)
         max_overlap = self._calculate_overlap(overlap_scores)
