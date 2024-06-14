@@ -216,6 +216,7 @@
 
       } else {
         $("#required-alert").hide();
+        $('#result [data-clone="result-template"]').remove();
         $("#loading").show();
 
         $.ajax({
@@ -252,7 +253,6 @@
     })
 
     function renderResult(data) {
-      $('#result').text("")
       data.forEach(el => {
         let template = $('#result-template').clone()
         $(template).css('visibility', 'visible')
@@ -261,6 +261,7 @@
         $(template).find('div.word').text(el.word)
         $(template).find('div.type').text("(" + el.type + ")")
         $(template).find('p.context').text(el.sense)
+        $(template).attr('data-clone', 'result-template');
         $('#result').append(template)
       });
     }
