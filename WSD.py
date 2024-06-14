@@ -1,13 +1,8 @@
 import re
 import json
-import string
 from Sastrawi.Stemmer.StemmerFactory import StemmerFactory
-from deep_translator import GoogleTranslator
 from kbbi import KBBI, AutentikasiKBBI
-from nltk.corpus import wordnet as wn
-import numpy as np
 import pandas as pd
-from sklearn.metrics import accuracy_score
 from pathlib import Path
 from dotenv import load_dotenv
 import os
