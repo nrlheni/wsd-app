@@ -8,7 +8,7 @@ This repository hosts a Word Sense Disambiguation (WSD) application for Indonesi
 - **Frontend**: HTML, CSS, JavaScript
 
 ## Corpus Used
-The application utilizes the KBBI (Kamus Besar Bahasa Indonesia) library as the corpus for word sense disambiguation. KBBI is a comprehensive dictionary of the Indonesian language, which provides a rich dataset for this purpose.
+The application utilizes the [KBBI (Kamus Besar Bahasa Indonesia)](https://kbbi.kemdikbud.go.id/) library as the corpus for word sense disambiguation. KBBI is a comprehensive dictionary of the Indonesian language, which provides a rich dataset for this purpose.
 
 ## Features
 - **Word Sense Disambiguation**: Given a sentence in Indonesian, the app determines the correct meaning of ambiguous words using the Simplified Lesk Algorithm.
