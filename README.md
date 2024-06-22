@@ -17,7 +17,8 @@ The application utilizes the KBBI (Kamus Besar Bahasa Indonesia) library as the 
 
 ## Visual
 
-![Uploading screenshot-127.0.0.1_5000-2023.06.27-14_50_38.png…]()
+![image](https://github.com/nrlheni/wsd-app/assets/86219910/ec8ca787-7346-441f-ba1d-a48a9b0dbb9a)
+
 ![image](https://github.com/nrlheni/wsd-app/assets/86219910/ae943559-4716-446b-8a98-08c189bae275)
 
 ## Evaluation Data
