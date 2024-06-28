@@ -30,7 +30,7 @@ Each evaluation set shows the number of correct and incorrect predictions, along
 
 ## Visual
 
-![image](https://github.com/nrlheni/wsd-app/assets/86219910/ec8ca787-7346-441f-ba1d-a48a9b0dbb9a)
+![markuphero-pDUwydRkLB1uL6xaDUGT](https://github.com/nrlheni/wsd-app/assets/86219910/c6d8560f-faf7-4063-b750-44d15076b5f7)
 
 ![image](https://github.com/nrlheni/wsd-app/assets/86219910/ae943559-4716-446b-8a98-08c189bae275)
 
